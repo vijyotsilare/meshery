@@ -47,7 +47,8 @@ function FlipCard({ duration = 500, onClick, onShow, children }: FlipCardProps) 
             style={{
               backfaceVisibility: 'hidden',
               transform: 'scale(-1, 1)',
-              maxWidth: '50vw',
+              maxWidth: '100%',
+              width: '100%',
               wordBreak: 'break-word',
             }}
           >

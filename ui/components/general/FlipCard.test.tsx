@@ -133,4 +133,29 @@ describe('FlipCard', () => {
       });
     }).not.toThrow();
   });
+
+  it('uses the full available width for the back face', () => {
+    render(
+      <FlipCard duration={600}>
+        <div data-testid="front">FRONT</div>
+        <div data-testid="back">BACK</div>
+      </FlipCard>,
+    );
+
+    act(() => {
+      fireEvent.click(screen.getByTestId('flip-card-wrapper'));
+    });
+
+    act(() => {
+      vi.advanceTimersByTime(150);
+    });
+
+    const back = screen.getByTestId('back');
+    const backFace = back.parentElement;
+
+    expect(backFace).toHaveStyle({
+      width: '100%',
+      maxWidth: '100%',
+    });
+  });
 });
